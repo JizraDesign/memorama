@@ -184,9 +184,6 @@ body{
     font-size: 1.2em;
     padding: 5px;
 }
-body>div:last-child{
-    display: none!important;
-}
 @keyframes btn-cerrar{
     25%{
         transform: rotate(-75deg);
