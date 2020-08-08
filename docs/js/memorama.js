@@ -6,11 +6,10 @@ const contMemorama = document.querySelector('.cont__memorama'),
 myAlert('alert', 'ok', 'Bienvenido', 'Diviértete jugando memorama de animalitos que no tiene animalitos, puchale al cráneo para comenzar');
 
 function iniciarMemo(){
-    console.log('Iniciar memorama');
     localStorage.setItem('clave', '');
     contMemorama.innerHTML = "";
     repartir();
-    repartir();
+    // repartir();
     setTimeout(() => {
         iniciarJuego();
     }, 300);
@@ -18,8 +17,9 @@ function iniciarMemo(){
         fetch('json/memorama.json')
         .then(res => res.json())
         .then(data => {
-            mezclarArreglo(data.tarjetas);
-            for(item of data.tarjetas){
+            const array = data.tarjetas.concat(data.tarjetas);
+            mezclarArreglo(array);
+            for(item of array){
                 let tarjetaItem = contMemorama.appendChild(document.createElement('div'));
                     tarjetaItem.setAttribute('class', 'tarjeta');
                     tarjetaItem.setAttribute('data-clave', item.clave);
@@ -35,7 +35,7 @@ function iniciarMemo(){
                 let tTrasera = tarjetaItem.appendChild(document.createElement('div'));
                     tTrasera.setAttribute('class', 'trasera');
                 let imgTrasera = tTrasera.appendChild(document.createElement('img'));
-                    imgTrasera.setAttribute('src', 'https://jizradesign.github.io/img/logo-icon-180x180.png');
+                    imgTrasera.setAttribute('src', 'https://jizradesign.github.io/img/logo-icon-512.png');
             };
         })
         .catch(error => {
