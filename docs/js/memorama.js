@@ -1,3 +1,4 @@
+
 let oportunidades = 8;
 const contMemorama = document.querySelector('.cont__memorama'),
     jugadasSpan = document.querySelector('#jugadas'),
@@ -35,7 +36,7 @@ function iniciarMemo(){
                 let tTrasera = tarjetaItem.appendChild(document.createElement('div'));
                     tTrasera.setAttribute('class', 'trasera');
                 let imgTrasera = tTrasera.appendChild(document.createElement('img'));
-                    imgTrasera.setAttribute('src', 'https://jizradesign.github.io/img/logo-icon-512.png');
+                    imgTrasera.setAttribute('src', 'https://jizradesign.github.io/img/logo-icon-512x512.png');
             };
         })
         .catch(error => {
@@ -43,7 +44,6 @@ function iniciarMemo(){
             console.log(error);
         });
     };
-
     function iniciarJuego(){
         intentosSpan.textContent = oportunidades;
         jugadasSpan.textContent = 0;
@@ -69,6 +69,7 @@ function iniciarMemo(){
                         voltear();
                     };
                     function match(clave1, clave2){
+                        audio('sounds/windows-exclamacion.mp3')
                         console.log('match');
                         if(clave1 === clave2){
                             jugadas++;
@@ -83,10 +84,12 @@ function iniciarMemo(){
                             localStorage.setItem('clave', '');
                         };
                         if(aciertos === 4){
+                            audio('sounds/ganar.mp3');
                             myAlert('alert', 'ok', 'Felicidades!!', 'Gracias por jugar');
-                        }
-                    }
+                        };
+                    };
                     function voltear(){
+                        audio('sounds/windows_error.mp3');
                         console.log('voltear');
                         jugadas++
                         jugadasSpan.textContent = jugadas;
@@ -94,7 +97,7 @@ function iniciarMemo(){
                             tarjeta.forEach(clave=>{
                                 if(!clave.classList.contains('block')){
                                     clave.classList.add('rotate'); 
-                                } 
+                                };
                             })
                             localStorage.setItem('clave', '');
                         }, 500);
@@ -102,23 +105,22 @@ function iniciarMemo(){
                             tarjeta.forEach(clave=>{
                                 clave.classList.add('block');
                             });
+                            audio('sounds/perder.mp3');
                             myAlert('alert', 'fail', 'Mala suerte!!', 'Animo, no pasa nada. Inténtalo de nuevo');
-                        }
-                    }
-                }
+                        };
+                    };
+                };
             });
-        };
-        
+        };  
     };
-
     function mezclarArreglo(arreglo){
         for (let i = arreglo.length - 1; i > 0; i--) {
             let indiceAleatorio = Math.floor(Math.random() * (i + 1));
             let temporal = arreglo[i];
             arreglo[i] = arreglo[indiceAleatorio];
             arreglo[indiceAleatorio] = temporal;
-        }
-    }
+        };
+    };
 };
 function myAlert(tipo, estado, titulo, mensaje){
     modal();
@@ -127,7 +129,7 @@ function myAlert(tipo, estado, titulo, mensaje){
         icono = 'icon-ok far fa-smile-beam';
     }else if(estado === "fail"){
         icono = 'icon-fail fas fa-frown-open';
-    }
+    };
     let contModal = document.querySelector('.cont__modal');
     let title = contModal.appendChild(document.createElement('h3'));
         title.setAttribute('id', 'title__alert');
@@ -139,7 +141,7 @@ function myAlert(tipo, estado, titulo, mensaje){
         contMensaje.textContent = mensaje;
     let iconAlert = contModal.appendChild(document.createElement('i'));
         iconAlert.setAttribute('class', icono);
-}
+};
 function modal(){
     let modal = document.body.appendChild(document.createElement('div'));
         modal.setAttribute('id', 'modal');
@@ -164,4 +166,4 @@ function cerrarModal(){
         document.querySelector('.modal').remove();
         iniciarMemo();
     }, 500);
-}
+};
