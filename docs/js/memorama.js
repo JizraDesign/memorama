@@ -1,4 +1,3 @@
-
 let oportunidades = 8;
 const contMemorama = document.querySelector('.cont__memorama'),
     jugadasSpan = document.querySelector('#jugadas'),
@@ -24,7 +23,7 @@ function iniciarMemo(){
             mezclarArreglo(array);
             for(item of array){
                 let tarjetaItem = contMemorama.appendChild(document.createElement('div'));
-                    tarjetaItem.setAttribute('class', 'tarjeta');
+                    tarjetaItem.setAttribute('class', 'tarjeta block');
                     tarjetaItem.setAttribute('data-clave', item.clave);
                     tarjetaItem.setAttribute('data-id', "");
                 let tDelantera = tarjetaItem.appendChild(document.createElement('div'));
@@ -71,13 +70,12 @@ function iniciarMemo(){
                         localStorage.setItem('clave', clave);
                         localStorage.setItem('clave-id', claveId);
                     }else if(localStorage.getItem('clave') === clave && localStorage.getItem('clave-id') != claveId){
-                        match(localStorage.getItem('clave'), clave)
+                        match(localStorage.getItem('clave'), clave);
                     }else{
                         voltear();
                     };
                     function match(clave1, clave2){
-                        audio('sounds/windows-exclamacion.mp3')
-                        console.log('match');
+                        audio('sounds/windows-exclamacion.mp3');
                         if(clave1 === clave2){
                             jugadas++;
                             aciertos++
@@ -97,7 +95,6 @@ function iniciarMemo(){
                     };
                     function voltear(){
                         audio('sounds/windows_error.mp3');
-                        console.log('voltear');
                         if(localStorage.getItem('clave-id') != claveId){
                             jugadas++;
                             jugadasSpan.textContent = jugadas;
