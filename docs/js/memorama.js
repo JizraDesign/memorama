@@ -3,11 +3,13 @@ let oportunidades = 8;
 const contMemorama = document.querySelector('.cont__memorama'),
     jugadasSpan = document.querySelector('#jugadas'),
     intentosSpan = document.querySelector('#intentos'),
-    aciertosSpan = document.querySelector('#aciertos'); 
+    aciertosSpan = document.querySelector('#aciertos');
+let victoria; 
 myAlert('alert', 'ok', 'Bienvenido', 'Diviértete jugando memorama de animalitos que no tiene animalitos, puchale al cráneo para comenzar');
 
 function iniciarMemo(){
     localStorage.setItem('clave', '');
+    localStorage.setItem('clave-id', '');
     contMemorama.innerHTML = "";
     repartir();
     // repartir();
@@ -24,6 +26,7 @@ function iniciarMemo(){
                 let tarjetaItem = contMemorama.appendChild(document.createElement('div'));
                     tarjetaItem.setAttribute('class', 'tarjeta');
                     tarjetaItem.setAttribute('data-clave', item.clave);
+                    tarjetaItem.setAttribute('data-id', "");
                 let tDelantera = tarjetaItem.appendChild(document.createElement('div'));
                     tDelantera.setAttribute('class', 'delantera');
                 let imgDelantera = tDelantera.appendChild(document.createElement('img'));
@@ -38,6 +41,7 @@ function iniciarMemo(){
                 let imgTrasera = tTrasera.appendChild(document.createElement('img'));
                     imgTrasera.setAttribute('src', 'https://jizradesign.github.io/img/logo-icon-512x512.png');
             };
+            victoria = array.length / 2;
         })
         .catch(error => {
             console.log('Error : ');
@@ -57,13 +61,16 @@ function iniciarMemo(){
                 tarjeta[i].classList.remove('block');
                 tarjeta[i].classList.add('rotate');
             }, 1000);
+            tarjeta[i].dataset.id=i+1;
             tarjeta[i].addEventListener('click', () =>{
                 if(!tarjeta[i].classList.contains('block')){
                     tarjeta[i].classList.toggle('rotate');
                     let clave = tarjeta[i].dataset.clave;
+                    let claveId = tarjeta[i].dataset.id;
                     if(localStorage.getItem('clave') === ''){
                         localStorage.setItem('clave', clave);
-                    }else if(localStorage.getItem('clave') === clave){
+                        localStorage.setItem('clave-id', claveId);
+                    }else if(localStorage.getItem('clave') === clave && localStorage.getItem('clave-id') != claveId){
                         match(localStorage.getItem('clave'), clave)
                     }else{
                         voltear();
@@ -83,7 +90,7 @@ function iniciarMemo(){
                             })
                             localStorage.setItem('clave', '');
                         };
-                        if(aciertos === 4){
+                        if(aciertos === victoria){
                             audio('sounds/ganar.mp3');
                             myAlert('alert', 'ok', 'Felicidades!!', 'Gracias por jugar');
                         };
@@ -91,8 +98,10 @@ function iniciarMemo(){
                     function voltear(){
                         audio('sounds/windows_error.mp3');
                         console.log('voltear');
-                        jugadas++
-                        jugadasSpan.textContent = jugadas;
+                        if(localStorage.getItem('clave-id') != claveId){
+                            jugadas++;
+                            jugadasSpan.textContent = jugadas;
+                        }
                         setTimeout(() => {
                             tarjeta.forEach(clave=>{
                                 if(!clave.classList.contains('block')){
@@ -100,6 +109,7 @@ function iniciarMemo(){
                                 };
                             })
                             localStorage.setItem('clave', '');
+                            localStorage.setItem('clave-id', '');
                         }, 500);
                         if(jugadas >= oportunidades){
                             tarjeta.forEach(clave=>{
