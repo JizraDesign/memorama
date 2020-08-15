@@ -1,17 +1,15 @@
-let oportunidades = 8;
+let oportunidades = 6;
 const contMemorama = document.querySelector('.cont__memorama'),
-    jugadasSpan = document.querySelector('#jugadas'),
-    intentosSpan = document.querySelector('#intentos'),
     aciertosSpan = document.querySelector('#aciertos');
-let victoria; 
+let victoria,
+    intentos = 0,
+    aciertos = 0; 
 myAlert('alert', 'ok', 'Bienvenido', 'Diviértete jugando memorama de animalitos que no tiene animalitos, puchale al cráneo para comenzar');
-
 function iniciarMemo(){
     localStorage.setItem('clave', '');
     localStorage.setItem('clave-id', '');
     contMemorama.innerHTML = "";
     repartir();
-    // repartir();
     setTimeout(() => {
         iniciarJuego();
     }, 300);
@@ -48,15 +46,16 @@ function iniciarMemo(){
         });
     };
     function iniciarJuego(){
-        intentosSpan.textContent = oportunidades;
-        jugadasSpan.textContent = 0;
-        aciertosSpan.textContent = 0;
+        vidas(oportunidades, intentos);
+        aciertosSpan.textContent = aciertos;
         let tarjeta = document.querySelectorAll('.tarjeta');
         
         for(let i = 0; i < tarjeta.length; i++){
             setTimeout(() => {
-                jugadas = 0;
                 aciertos = 0;
+                intentos = 0;
+                aciertosSpan.textContent = aciertos;
+                vidas(oportunidades, intentos);
                 tarjeta[i].classList.remove('block');
                 tarjeta[i].classList.add('rotate');
             }, 1000);
@@ -77,10 +76,8 @@ function iniciarMemo(){
                     function match(clave1, clave2){
                         audio('sounds/windows-exclamacion.mp3');
                         if(clave1 === clave2){
-                            jugadas++;
                             aciertos++
                             aciertosSpan.textContent = aciertos;
-                            jugadasSpan.textContent = jugadas;
                             tarjeta.forEach(clave=>{
                                 if(clave.dataset.clave == clave1){
                                     clave.classList.add('block');
@@ -96,8 +93,8 @@ function iniciarMemo(){
                     function voltear(){
                         audio('sounds/windows_error.mp3');
                         if(localStorage.getItem('clave-id') != claveId){
-                            jugadas++;
-                            jugadasSpan.textContent = jugadas;
+                            intentos++;
+                            vidas(oportunidades, intentos);
                         }
                         setTimeout(() => {
                             tarjeta.forEach(clave=>{
@@ -108,7 +105,7 @@ function iniciarMemo(){
                             localStorage.setItem('clave', '');
                             localStorage.setItem('clave-id', '');
                         }, 500);
-                        if(jugadas >= oportunidades){
+                        if(oportunidades - intentos === 0){
                             tarjeta.forEach(clave=>{
                                 clave.classList.add('block');
                             });
@@ -126,6 +123,15 @@ function iniciarMemo(){
             let temporal = arreglo[i];
             arreglo[i] = arreglo[indiceAleatorio];
             arreglo[indiceAleatorio] = temporal;
+        };
+    };
+    function vidas(oportunidades, intentos){
+        let vidasCont = document.querySelector('#vidas');
+        vidasCont.innerHTML = "";
+        let jugadas = oportunidades - intentos;
+        for(let i = 0; i < jugadas; i++){
+            let vida = vidasCont.appendChild(document.createElement('i'));
+                vida.setAttribute('class', 'heart-red fas fa-heart');
         };
     };
 };
