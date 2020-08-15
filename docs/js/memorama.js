@@ -1,11 +1,23 @@
-let oportunidades = 6;
-const contMemorama = document.querySelector('.cont__memorama'),
+const url = 'json/memorama.json',
+    contMemorama = document.querySelector('.cont__memorama'),
     aciertosSpan = document.querySelector('#aciertos');
-let victoria,
-    intentos = 0,
-    aciertos = 0; 
+let oportunidades, $lvl = 0, victoria, intentos, aciertos; 
 myAlert('alert', 'ok', 'Bienvenido', 'Diviértete jugando memorama de animalitos que no tiene animalitos, puchale al cráneo para comenzar');
 function iniciarMemo(){
+    document.querySelector('#nivel-jugador').innerHTML = 'Nivel : ';
+    if($lvl === 0){
+        document.querySelector('#nivel-jugador').innerHTML += 'Facil';
+        oportunidades = 6;
+    }else if($lvl === 1){
+        document.querySelector('#nivel-jugador').innerHTML += 'Medio';
+        oportunidades = 4;
+    }else if($lvl === 2){
+        document.querySelector('#nivel-jugador').innerHTML += 'Dificil';
+        oportunidades = 2;
+    }else if($lvl === 3){
+        document.querySelector('#nivel-jugador').innerHTML += 'Perfecto';
+        oportunidades = 0;
+    };
     localStorage.setItem('clave', '');
     localStorage.setItem('clave-id', '');
     contMemorama.innerHTML = "";
@@ -14,7 +26,7 @@ function iniciarMemo(){
         iniciarJuego();
     }, 300);
     function repartir(){
-        fetch('json/memorama.json')
+        fetch(url)
         .then(res => res.json())
         .then(data => {
             const array = data.tarjetas.concat(data.tarjetas);
@@ -76,18 +88,23 @@ function iniciarMemo(){
                     function match(clave1, clave2){
                         audio('sounds/windows-exclamacion.mp3');
                         if(clave1 === clave2){
-                            aciertos++
+                            aciertos++;
                             aciertosSpan.textContent = aciertos;
                             tarjeta.forEach(clave=>{
                                 if(clave.dataset.clave == clave1){
                                     clave.classList.add('block');
-                                }
-                            })
+                                };
+                            });
                             localStorage.setItem('clave', '');
                         };
                         if(aciertos === victoria){
                             audio('sounds/ganar.mp3');
-                            myAlert('alert', 'ok', 'Felicidades!!', 'Gracias por jugar');
+                            $lvl++;
+                            if($lvl >= 4){
+                                myAlert('alert', 'ok', 'Felicidades!!', 'Ganaste todos los niveles');
+                            }else{
+                                myAlert('alert', 'ok', 'Felicidades!!', 'Subiste de nivel');
+                            };
                         };
                     };
                     function voltear(){
@@ -95,21 +112,22 @@ function iniciarMemo(){
                         if(localStorage.getItem('clave-id') != claveId){
                             intentos++;
                             vidas(oportunidades, intentos);
-                        }
+                        };
                         setTimeout(() => {
                             tarjeta.forEach(clave=>{
                                 if(!clave.classList.contains('block')){
                                     clave.classList.add('rotate'); 
                                 };
-                            })
+                            });
                             localStorage.setItem('clave', '');
                             localStorage.setItem('clave-id', '');
                         }, 500);
-                        if(oportunidades - intentos === 0){
+                        if(oportunidades - intentos <= 0){
                             tarjeta.forEach(clave=>{
                                 clave.classList.add('block');
                             });
                             audio('sounds/perder.mp3');
+                            $lvl = 0;
                             myAlert('alert', 'fail', 'Mala suerte!!', 'Animo, no pasa nada. Inténtalo de nuevo');
                         };
                     };
@@ -135,48 +153,63 @@ function iniciarMemo(){
         };
     };
 };
-function myAlert(tipo, estado, titulo, mensaje){
-    modal();
-    let icono;
-    if(estado === "ok"){
-        icono = 'icon-ok far fa-smile-beam';
-    }else if(estado === "fail"){
-        icono = 'icon-fail fas fa-frown-open';
-    };
+function formulario(){
     let contModal = document.querySelector('.cont__modal');
-    let title = contModal.appendChild(document.createElement('h3'));
-        title.setAttribute('id', 'title__alert');
-        title.setAttribute('class', 'title__alert');
-        title.textContent = titulo;
-    let contMensaje = contModal.appendChild(document.createElement('p'));
-        contMensaje.setAttribute('id', 'cont__alert');
-        contMensaje.setAttribute('class', 'cont__alert');
-        contMensaje.textContent = mensaje;
-    let iconAlert = contModal.appendChild(document.createElement('i'));
-        iconAlert.setAttribute('class', icono);
-};
-function modal(){
-    let modal = document.body.appendChild(document.createElement('div'));
-        modal.setAttribute('id', 'modal');
-        modal.setAttribute('class', 'modal');
-    let contModal = modal.appendChild(document.createElement('div'));
-        contModal.setAttribute('id', 'cont__modal');
-        contModal.setAttribute('class', 'cont__modal');
-    let btnCerrarModal = modal.appendChild(document.createElement('div'));
-        btnCerrarModal.setAttribute('id', 'btn__cerrar-modal');
-        btnCerrarModal.setAttribute('class', 'btn__cerrar-modal');
-    let iconCerrarModal = btnCerrarModal.appendChild(document.createElement('i'));
-        iconCerrarModal.setAttribute('class','fas fa-skull');
-        iconCerrarModal.setAttribute('title','Cerrar ventana');
-        setTimeout(() => {
-            document.querySelector('.modal').classList.add('visible');
-        }, 300);
-        document.querySelector('#btn__cerrar-modal').addEventListener('click', cerrarModal);
-};
-function cerrarModal(){
-    document.querySelector('.modal').classList.remove('visible');
-    setTimeout(() => {
-        document.querySelector('.modal').remove();
-        iniciarMemo();
-    }, 500);
+    let form = contModal.appendChild(document.createElement('form'));
+        form.setAttribute('id', 'lvl');
+        form.setAttribute('class', 'lvl');
+    let iptNombre = form.appendChild(document.createElement('input'));
+        iptNombre.setAttribute('type', 'text');
+        iptNombre.setAttribute('id','nombre');
+        iptNombre.setAttribute('class','nombre');
+        iptNombre.setAttribute('name','nombre');
+        iptNombre.setAttribute('placeholder', 'Pon tu nombre aqui');
+    // let selectLvl = form.appendChild(document.createElement('select'));
+    //     selectLvl.setAttribute('id', 'nivel');
+    //     selectLvl.setAttribute('name', 'nivel');
+    // let optLvl = selectLvl.appendChild(document.createElement('option'));
+    //     optLvl.setAttribute('value', '');
+    //     optLvl.setAttribute('selected', '');
+    //     optLvl.setAttribute('disabled', '');
+    //     optLvl.textContent = 'Selecciona tu nivel';
+    // optLvl = selectLvl.appendChild(document.createElement('option'));
+    //     optLvl.setAttribute('value', '0');
+    //     optLvl.textContent = 'Facil';
+    // optLvl = selectLvl.appendChild(document.createElement('option'));
+    //     optLvl.setAttribute('value', '1');
+    //     optLvl.textContent = 'Medio';
+    // optLvl = selectLvl.appendChild(document.createElement('option'));
+    //     optLvl.setAttribute('value', '2');
+    //     optLvl.textContent = 'Dificil';
+    let label = form.appendChild(document.createElement('label'));
+        label.setAttribute('for', 'enviar');
+        label.setAttribute('id', 'btn__cerrar-modal');
+        label.setAttribute('class', 'btn__cerrar-modal');
+    let iconLabel = label.appendChild(document.createElement('i'));
+        iconLabel.setAttribute('class', 'fas fa-skull');
+    let iptSubmit = form.appendChild(document.createElement('input'));
+        iptSubmit.setAttribute('type', 'submit');
+        iptSubmit.setAttribute('name', 'enviar');
+        iptSubmit.setAttribute('id', 'enviar');
+
+    const formLvl = document.querySelector('#lvl'),
+        nombre = document.querySelector('#nombre'),
+        nivel = document.querySelector('#nivel');
+    nombre.addEventListener('keyup', ()=> {
+        if(nombre.value.length >= 1){
+            nombre.classList.add('active');
+        }else{
+            nombre.classList.remove('active');
+        };
+    });
+    formLvl.addEventListener('submit', e=> {
+        e.preventDefault();
+        if(nombre.value === ""){
+
+            return false;
+        };
+        document.querySelector('#nombre-jugador').innerHTML += nombre.value;
+        // $lvl = nivel.value;
+        cerrarModal();
+    });
 };

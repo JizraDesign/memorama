@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorama</title>
-    <link rel="stylesheet" href="css/memorama.css">
+    <link rel="stylesheet" href="css/memorama.min.css">
 </head>
 <body>
     <main class="contenedor__principal">
         <div id="saludo"></div>
         <h1 class="title">Memorama de Animalitos(sin animalitos)</h1>
         <div class="juego">
+            <div class="jugador" id="jugador">
+                <div id="nombre-jugador" class="nombre-jugador">Jugador : </div>
+                <div id="nivel-jugador" class="nivel-jugador">Nivel : </div>
+            </div>
             <div class="jugadas">
-                <!-- <div>Intentos <span id="jugadas"></span> / <span id="intentos"></span></div> -->
                 <div>Vidas : <span id="vidas"></span></div>
                 <div>Aciertos : <span id="aciertos"></span></div>
             </div>
@@ -26,6 +29,7 @@
     </footer>
     <script src="https://kit.fontawesome.com/1f8614daef.js" crossorigin="anonymous"></script>
     <script src="js/sounds.js"></script>
-    <script src="js/memorama.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="js/memorama.min.js"></script>
 </body>
 </html>

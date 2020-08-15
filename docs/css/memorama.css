@@ -29,6 +29,12 @@ body{
     text-align: center;
     margin: auto;
 }
+/* >>>>> -->>>>> ----- data user ----- <<<<<-- <<<<< */
+.jugador{
+    display: flex;
+    justify-content: space-around;
+}
+/* >>>>> -->>>>> ----- panel del juego ----- <<<<<-- <<<<< */
 .jugadas{
     display: flex;
     justify-content: space-around;
@@ -44,6 +50,7 @@ body{
     font-size: .7em;
     margin-right: 5px;
 }
+/* >>>>> -->>>>> ----- contenedor ----- <<<<<-- <<<<< */
 .memorama{
     width: 100%;
     display: flex;
@@ -60,6 +67,8 @@ body{
     max-width: 1000px;
     padding: 20px;
 }
+/* >>>>> -->>>>> ----- tarjetas ----- <<<<<-- <<<<< */
+
 .tarjeta{
     position: relative;
     width: 95%;
@@ -100,6 +109,8 @@ body{
 .tarjeta.rotate{
     transform: rotateY(180deg);
 }
+/* >>>>> -->>>>> ----- footer ----- <<<<<-- <<<<< */
+
 .footer{
     align-self: flex-end;
     width: 100%;
@@ -111,6 +122,7 @@ body{
 .footer i{
     color: red;
 }
+/* >>>>> -->>>>> ----- modal ----- <<<<<-- <<<<< */
 .modal{
     position: fixed;
     top: 50%;
@@ -135,7 +147,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
 
     width: 95%;
     max-width: 1000px;
@@ -158,16 +170,13 @@ body{
     color: orange;
 }
 .btn__cerrar-modal{
-    position: fixed;
-    top: 5%;
-    right: 5%;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
     width: 40px;
     height: 40px;
+    margin: auto;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
@@ -194,6 +203,37 @@ body{
     width: 100%;
     font-size: 1.2em;
     padding: 5px;
+    margin-bottom: 10px;
+}
+/* >>>>> -->>>>> ----- form ----- <<<<<-- <<<<< */
+.lvl{
+    width: 100%;
+    max-width: 400px;
+}
+input[type="submit"]{
+    display: none;
+}
+.nombre{
+    color: teal;
+    width: 100%;
+    height: 45px;
+    background: none;
+    border: none;
+    border-bottom: solid 2px #ccc;
+    margin-bottom: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.nombre.active{
+    border-bottom: solid 2px teal;
+}
+.nombre:focus{
+    border-bottom: solid 2px teal;
+}
+#nivel{
+    width: 100%;
+    height: 45%;
+    margin-bottom: 10px;
 }
 @keyframes btn-cerrar{
     25%{
