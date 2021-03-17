@@ -1,20 +1,36 @@
 {
     "tarjetas": [
         {
-            "clave": "astronauta",
-            "img": "img/astronaut.svg"
+            "clave": "demonio",
+            "img": "img/img-01.jpg"
         },
         {
-            "clave": "dna",
-            "img": "img/dna.svg"
+            "clave": "conejo",
+            "img": "img/img-02.jpg"
         },
         {
             "clave": "sciencia",
-            "img": "img/science.svg"
+            "img": "img/img-03.jpg"
         },
         {
-            "clave": "scientifico",
-            "img": "img/scientist.svg"
+            "clave": "cabrio",
+            "img": "img/img-04.jpg"
+        },
+        {
+            "clave": "fume",
+            "img": "img/img-05.jpg"
+        },
+        {
+            "clave": "espejo",
+            "img": "img/img-06.jpg"
+        },
+        {
+            "clave": "nazareno",
+            "img": "img/img-07.jpg"
+        },
+        {
+            "clave": "luzbel",
+            "img": "img/img-08.jpg"
         }
     ]
 }
