@@ -1,0 +1,20 @@
+{
+    "tarjetas": [
+        {
+            "clave": "astronau",
+            "img": "img/astronaut.svg"
+        },
+        {
+            "clave": "dna",
+            "img": "img/dna.svg"
+        },
+        {
+            "clave": "science",
+            "img": "img/science.svg"
+        },
+        {
+            "clave": "scientist",
+            "img": "img/scientist.svg"
+        }
+    ]
+}
