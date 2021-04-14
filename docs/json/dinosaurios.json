@@ -1,0 +1,50 @@
+{
+    "tarjetas": [
+        {
+            "clave": "dino01",
+            "img": "img/dinosaurios/dino1.jpg"
+        },
+        {
+            "clave": "dino02",
+            "img": "img/dinosaurios/dino2.jpg"
+        },
+        {
+            "clave": "dino03",
+            "img": "img/dinosaurios/dino3.jpg"
+        },
+        {
+            "clave": "dino04",
+            "img": "img/dinosaurios/dino4.jpg"
+        },
+        {
+            "clave": "dino05",
+            "img": "img/dinosaurios/dino5.jpg"
+        },
+        {
+            "clave": "dino06",
+            "img": "img/dinosaurios/dino6.jpg"
+        },
+        {
+            "clave": "dino07",
+            "img": "img/dinosaurios/dino7.jpg"
+        },
+        {
+            "clave": "dino08",
+            "img": "img/dinosaurios/dino8.jpg"
+        },
+        {
+            "clave": "dino09",
+            "img": "img/dinosaurios/dino9.jpg"
+        },
+        {
+            "clave": "dino00",
+            "img": "img/dinosaurios/dino0.jpg"
+        }
+    ],
+    "sounds":{
+        "win":"sounds/dinosaurios/win1.mp3",
+        "fail":"sounds/dinosaurios/step0.mp3",
+        "bg":"sounds/dinosaurios/music.mp3"
+    },
+    "wallpaper":"img/dinosaurios/wallpaper.jpg"
+}

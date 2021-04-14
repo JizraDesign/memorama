@@ -2,35 +2,41 @@
     "tarjetas": [
         {
             "clave": "demonio",
-            "img": "img/img-01.jpg"
+            "img": "img/rarito/img-01.jpg"
         },
         {
             "clave": "conejo",
-            "img": "img/img-02.jpg"
+            "img": "img/rarito/img-02.jpg"
         },
         {
             "clave": "sciencia",
-            "img": "img/img-03.jpg"
+            "img": "img/rarito/img-03.jpg"
         },
         {
             "clave": "cabrio",
-            "img": "img/img-04.jpg"
+            "img": "img/rarito/img-04.jpg"
         },
         {
             "clave": "fume",
-            "img": "img/img-05.jpg"
+            "img": "img/rarito/img-05.jpg"
         },
         {
             "clave": "espejo",
-            "img": "img/img-06.jpg"
+            "img": "img/rarito/img-06.jpg"
         },
         {
             "clave": "nazareno",
-            "img": "img/img-07.jpg"
+            "img": "img/rarito/img-07.jpg"
         },
         {
             "clave": "luzbel",
-            "img": "img/img-08.jpg"
+            "img": "img/rarito/img-08.jpg"
         }
-    ]
+    ],
+    "sounds":{
+        "win":"sounds/windows-exclamacion.mp3",
+        "fail":"sounds/windows_error.mp3",
+        "bg":""
+    },
+    "wallpaper":""
 }

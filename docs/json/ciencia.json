@@ -2,19 +2,25 @@
     "tarjetas": [
         {
             "clave": "astronau",
-            "img": "img/astronaut.svg"
+            "img": "img/ciencia/astronaut.svg"
         },
         {
             "clave": "dna",
-            "img": "img/dna.svg"
+            "img": "img/ciencia/dna.svg"
         },
         {
             "clave": "science",
-            "img": "img/science.svg"
+            "img": "img/ciencia/science.svg"
         },
         {
             "clave": "scientist",
-            "img": "img/scientist.svg"
+            "img": "img/ciencia/scientist.svg"
         }
-    ]
+    ],
+    "sounds":{
+        "win":"sounds/windows-exclamacion.mp3",
+        "fail":"sounds/windows_error.mp3",
+        "bg":""
+    },
+    "wallpaper":""
 }
