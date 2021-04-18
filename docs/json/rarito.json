@@ -31,6 +31,14 @@
         {
             "clave": "luzbel",
             "img": "img/rarito/img-08.jpg"
+        },
+        {
+            "clave": "nina",
+            "img": "img/rarito/img-09.jpg"
+        },
+        {
+            "clave": "cuernos",
+            "img": "img/rarito/img-00.jpg"
         }
     ],
     "sounds":{
