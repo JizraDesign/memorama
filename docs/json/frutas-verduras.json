@@ -1,0 +1,50 @@
+{
+    "tarjetas": [
+        {
+            "clave": "apio",
+            "img": "img/frutas-verduras/apio.jpg"
+        },
+        {
+            "clave": "brocoli",
+            "img": "img/frutas-verduras/brocoli.jpg"
+        },
+        {
+            "clave": "fresa",
+            "img": "img/frutas-verduras/fresa.jpg"
+        },
+        {
+            "clave": "jicama",
+            "img": "img/frutas-verduras/jicama.jpg"
+        },
+        {
+            "clave": "jitomate",
+            "img": "img/frutas-verduras/jitomate.jpg"
+        },
+        {
+            "clave": "kiwi",
+            "img": "img/frutas-verduras/kiwi.jpg"
+        },
+        {
+            "clave": "mango",
+            "img": "img/frutas-verduras/mango.jpg"
+        },
+        {
+            "clave": "pina",
+            "img": "img/frutas-verduras/pina.jpg"
+        },
+        {
+            "clave": "platano",
+            "img": "img/frutas-verduras/platano.jpg"
+        },
+        {
+            "clave": "zanahoria",
+            "img": "img/frutas-verduras/zanahoria.jpg"
+        }
+    ],
+    "sounds":{
+        "win":"sounds/windows-exclamacion.mp3",
+        "fail":"sounds/windows_error.mp3",
+        "bg":""
+    },
+    "wallpaper":""
+}
