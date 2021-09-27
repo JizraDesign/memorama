@@ -1,0 +1,50 @@
+{
+    "tarjetas": [
+        {
+            "clave": "apio",
+            "img": "img/animalitos/apio.jpg"
+        },
+        {
+            "clave": "brocoli",
+            "img": "img/animalitos/brocoli.jpg"
+        },
+        {
+            "clave": "fresa",
+            "img": "img/animalitos/fresa.jpg"
+        },
+        {
+            "clave": "jicama",
+            "img": "img/animalitos/jicama.jpg"
+        },
+        {
+            "clave": "jitomate",
+            "img": "img/animalitos/jitomate.jpg"
+        },
+        {
+            "clave": "kiwi",
+            "img": "img/animalitos/kiwi.jpg"
+        },
+        {
+            "clave": "mango",
+            "img": "img/animalitos/mango.jpg"
+        },
+        {
+            "clave": "pina",
+            "img": "img/animalitos/pina.jpg"
+        },
+        {
+            "clave": "platano",
+            "img": "img/animalitos/platano.jpg"
+        },
+        {
+            "clave": "zanahoria",
+            "img": "img/animalitos/zanahoria.jpg"
+        }
+    ],
+    "sounds":{
+        "win":"sounds/windows-exclamacion.mp3",
+        "fail":"sounds/windows_error.mp3",
+        "bg":""
+    },
+    "wallpaper":""
+}
