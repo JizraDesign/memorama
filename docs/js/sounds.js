@@ -7,7 +7,7 @@ let effectOpt = true,
     musicOpt = true,
     musicTheme;
 
-function audio(tipo, pista){
+function audio( tipo, pista ) {
     
     if(tipo === true){
         const reproducir = new Audio();
@@ -54,4 +54,4 @@ btnEffects.addEventListener("click", () => {
         };
         effectOpt = true;
     };
-})
+});
