@@ -1,0 +1,50 @@
+{
+    "tarjetas": [
+        {
+            "clave": "back1",
+            "img": "img/bakugan/back1.png"
+        },
+        {
+            "clave": "back2",
+            "img": "img/bakugan/back2.jpg"
+        },
+        {
+            "clave": "back3",
+            "img": "img/bakugan/back3.jpg"
+        },
+        {
+            "clave": "back4",
+            "img": "img/bakugan/back4.jpg"
+        },
+        {
+            "clave": "back5",
+            "img": "img/bakugan/back5.jpg"
+        },
+        {
+            "clave": "back6",
+            "img": "img/bakugan/back6.jpg"
+        },
+        {
+            "clave": "back7",
+            "img": "img/bakugan/back7.jpg"
+        },
+        {
+            "clave": "back8",
+            "img": "img/bakugan/back8.jpg"
+        },
+        {
+            "clave": "back9",
+            "img": "img/bakugan/back9.jpg"
+        },
+        {
+            "clave": "back10",
+            "img": "img/bakugan/back10.jpg"
+        }
+    ],
+    "sounds":{
+        "win":"sounds/windows-exclamacion.mp3",
+        "fail":"sounds/windows_error.mp3",
+        "bg":""
+    },
+    "wallpaper":"img/bakugan/background.png"
+}
