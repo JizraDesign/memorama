@@ -24,8 +24,8 @@ function myAlert( tipo, estado, titulo, mensaje ) {
         contMensaje.textContent = mensaje;
     let iconAlert = contModal.appendChild(document.createElement('i'));
         iconAlert.setAttribute('class', icono);
-        
-    if(document.querySelector('#nombre-jugador').textContent === " Jugador : "){
+    
+    if(document.querySelector('#nombre-jugador').textContent === " Jugador : " && estado == "ok"){
         formulario();
 
     }else{
