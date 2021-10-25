@@ -2,19 +2,23 @@
     "tarjetas": [
         {
             "clave": "astronau",
-            "img": "img/ciencia/astronaut.svg"
+            "img": "img/ciencia/astronaut.svg",
+            "desc": "esto hombre camina en la luna"
         },
         {
             "clave": "dna",
-            "img": "img/ciencia/dna.svg"
+            "img": "img/ciencia/dna.svg",
+            "desc": "cadena"
         },
         {
             "clave": "science",
-            "img": "img/ciencia/science.svg"
+            "img": "img/ciencia/science.svg",
+            "desc": "Chica volando"
         },
         {
             "clave": "scientist",
-            "img": "img/ciencia/scientist.svg"
+            "img": "img/ciencia/scientist.svg",
+            "desc": "instrumento de laboratorio"
         }
     ],
     "sounds":{
