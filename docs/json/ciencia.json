@@ -3,22 +3,26 @@
         {
             "clave": "astronau",
             "img": "img/ciencia/astronaut.svg",
-            "desc": "esto hombre camina en la luna"
+            "desc": "esto hombre camina en la luna",
+            "view_img": true
         },
         {
             "clave": "dna",
             "img": "img/ciencia/dna.svg",
-            "desc": "cadena"
+            "desc": "cadena",
+            "view_img": true
         },
         {
             "clave": "science",
             "img": "img/ciencia/science.svg",
-            "desc": "Chica volando"
+            "desc": "Chica volando",
+            "view_img": true
         },
         {
             "clave": "scientist",
             "img": "img/ciencia/scientist.svg",
-            "desc": "instrumento de laboratorio"
+            "desc": "instrumento de laboratorio",
+            "view_img": true
         }
     ],
     "sounds":{

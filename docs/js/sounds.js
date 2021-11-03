@@ -7,12 +7,21 @@ let effectOpt = true,
     musicOpt = true,
     musicTheme;
 
-function audio( tipo, pista ) {
+/**
+ * 
+ * @param {Boolean} ready si el parametro es true se reproducira el sonido
+ * @param {string} pista url de la pista a reproducir
+ * @param {string} music si es true es un sonido de fondo
+ * @returns 
+ */
+function audio( pista, music ) {
     
-    if(tipo === true){
+    if ( effectOpt === true ) {
         const reproducir = new Audio();
         reproducir.src = pista;
         reproducir.play();
+
+        if ( music ) musicTheme = reproducir;
         return reproducir;
     };
     
@@ -29,29 +38,32 @@ btnSettings.addEventListener("click", () => {
 
 btnMusic.addEventListener("click", () => {
     try {
-        if(musicTheme.paused){
-            btnMusic.querySelector("i").classList.add("fa-volume-up");
-            btnMusic.querySelector("i").classList.remove("fa-volume-mute");
+        if ( musicTheme.paused ) {
+            btnMusic.querySelector( "i" ).classList.add( "fa-volume-up" );
+            btnMusic.querySelector( "i" ).classList.remove( "fa-volume-mute" );
             musicTheme.play();
-        }else{
-            btnMusic.querySelector("i").classList.remove("fa-volume-up");
-            btnMusic.querySelector("i").classList.add("fa-volume-mute");
+        } else {
+            btnMusic.querySelector( "i" ).classList.remove( "fa-volume-up" );
+            btnMusic.querySelector( "i" ).classList.add( "fa-volume-mute" );
             musicTheme.pause();
         };
-    } catch (error) {
-        btnMusic.remove()
+    } catch ( error ) {
+        console.log( error );
+        btnMusic.remove();
     }
     
 });
 
-btnEffects.addEventListener("click", () => {
-    if(effectOpt === true){
+btnEffects.addEventListener( "click", () => {
+    if ( effectOpt === true ) {
         effectOpt = false;
-        btnEffects.classList.add("off");
-    }else{
-        if(btnEffects.classList.contains("off")){
-            btnEffects.classList.remove("off")
+        btnEffects.classList.add( "off" );
+    } else {
+        if ( btnEffects.classList.contains( "off" ) ) {
+            btnEffects.classList.remove( "off" )
         };
         effectOpt = true;
     };
 });
+
+export { audio }
